@@ -1,11 +1,21 @@
 name: gitleaks
 
-on: [push,pull_request]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   gitleaks:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: gitleaks-action
-      uses: zricethezav/gitleaks-action@master
+      - uses: actions/checkout@v3
+      
+      - name: install docker
+        run: pip install docker
+
+      - name: intall and run gitleaks
+        run: |
+          docker pull zricethezav/gitleaks:latest
+          docker run -v $wrongsecrets/:/path zricethezav/gitleaks:latest detect --source="/path"
