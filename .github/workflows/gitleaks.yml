@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
+      - name: temp
+        run: ls
+      
       - name: install docker
         run: pip install docker
 
