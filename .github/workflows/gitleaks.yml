@@ -21,4 +21,4 @@ jobs:
       - name: intall and run gitleaks
         run: |
           docker pull zricethezav/gitleaks:latest
-          docker run -v $/home/runner/work/wrongsecrets/wrongsecrets:/path zricethezav/gitleaks:latest detect --source="/path"
+          docker run -v $(pwd):/path zricethezav/gitleaks:latest detect --source="/path"
