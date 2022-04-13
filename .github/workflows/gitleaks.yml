@@ -19,6 +19,4 @@ jobs:
        
       - name: run gitleaks scan
         run: |
-          ls
-          cd gitleaks
-          ./gitleaks detect -s ../../wrongsecrets
+          ./gitleaks detect -s ../wrongsecrets
