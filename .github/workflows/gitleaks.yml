@@ -22,7 +22,9 @@ jobs:
       - name: install gitleaks
         run: |
           git clone https://github.com/zricethezav/gitleaks.git
+          ls
           cd gitleaks
+          ls
           make build
           cd ..
           
