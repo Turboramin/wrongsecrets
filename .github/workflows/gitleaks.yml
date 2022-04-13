@@ -16,8 +16,7 @@ jobs:
         run: |
           wget https://github.com/zricethezav/gitleaks/releases/download/v8.6.1/gitleaks_8.6.1_linux_arm64.tar.gz
           tar -xvzf gitleaks_8.6.1_linux_arm64.tar.gz
-          ls gitleaks
-          
+       
       - name: run gitleaks scan
         run: |
-          /gitleaks_8.6.1_linux_arm64/gitleaks detect -s /
+          /gitleaks/gitleaks detect -s /
