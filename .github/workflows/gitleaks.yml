@@ -12,21 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: install dependencies
+      - name: download gitleaks binary
         run: |
-          wget https://go.dev/dl/go1.18.1.linux-amd64.tar.gz
-          tar -xzf go1.18.1.linux-amd64.tar.gz
-          sudo mv go /usr/local/
-          export PATH=$PATH:/usr/local/go/bin
-          go get -u all
-          
-      - name: install gitleaks
-        run: |
-          git clone https://github.com/zricethezav/gitleaks.git
-          cd gitleaks
-          make build
-          cd ..
+          wget https://github.com/zricethezav/gitleaks/releases/download/v8.6.1/gitleaks_8.6.1_linux_arm64.tar.gz
+          tar –xvzf gitleaks_8.6.1_linux_arm64.tar.gz
           
       - name: run gitleaks scan
         run: |
-          gitleaks detect -s /
+          /gitleaks_8.6.1_linux_arm64/gitleaks detect -s /
