@@ -11,14 +11,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
-      - name: temp
-        run: pwd
-      
-      - name: install docker
-        run: pip install docker
 
-      - name: intall and run gitleaks
+      - name: install dependencies
         run: |
-          docker pull zricethezav/gitleaks:latest
-          docker run -v $(pwd):/path zricethezav/gitleaks:latest detect --source="/"
+          wget https://go.dev/dl/go1.18.1.linux-amd64.tar.gz
+          rm -rf /usr/local/go && tar -C /usr/local -xzf go1.18.1.linux-amd64.tar.gz
+          export PATH=$PATH:/usr/local/go/bin
+          
+      - name: install gitleaks
+        run: |
+          git clone https://github.com/zricethezav/gitleaks.git
+          cd gitleaks
+          make build
+          cd ..
+          
+      - name: run gitleaks scan
+        run: |
+          gitleaks detect -s /
