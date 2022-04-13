@@ -18,13 +18,12 @@ jobs:
           tar -xzf go1.18.1.linux-amd64.tar.gz
           sudo mv go /usr/local/
           export PATH=$PATH:/usr/local/go/bin
+          go get -u all
           
       - name: install gitleaks
         run: |
           git clone https://github.com/zricethezav/gitleaks.git
-          ls
           cd gitleaks
-          ls
           make build
           cd ..
           
