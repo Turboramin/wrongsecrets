@@ -15,8 +15,8 @@ jobs:
       - name: download gitleaks binary
         run: |
           wget https://github.com/zricethezav/gitleaks/releases/download/v8.6.1/gitleaks_8.6.1_linux_arm64.tar.gz
-          ls
           tar -xvzf gitleaks_8.6.1_linux_arm64.tar.gz
+          ls
           
       - name: run gitleaks scan
         run: |
